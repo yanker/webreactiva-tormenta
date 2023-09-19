@@ -1,0 +1,11 @@
+---
+interface Props {
+  idAlert:string,
+  cssAlert: string,
+  textAlert: string
+}
+const { idAlert, cssAlert, textAlert } = Astro.props;
+---
+<div id={idAlert} class={cssAlert}>
+  <span>{textAlert}</span>
+</div>

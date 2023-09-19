@@ -1,49 +1,94 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import '../styles/style.css';
+import Alerts from "../components/Alerts.astro";
+import Button from "../components/Button.astro";
+import Premio from "../components/Premio.astro";
+import "../styles/style.css";
 ---
+
 <Layout>
-
-	<!-- Mensajes -->
-	<div class="alert" id="msgPremio">
-		<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-		<span id="msg"></span>This is an alert box.
-	</div>
-
   <!-- Contador de clics -->
   <div class="counter">
-    Clics: <span id="counter">0</span>
+    Tu Apuesta: <span id="counter">0</span>
   </div>
 
-  <!-- Botón rojo grande y redondo -->
-  <button class="red-button">Clic</button>
+  <Premio />
 
-  <hr />
+  <div id="game">
+    <!-- COMPONENTE Botón rojo grande y redondo -->
+    <Button cssButton="red-button" textButton="Click" />
+    <hr />
+    <!-- COMPONENTE Alert -->
+    <div id="MsgError" style="display:none">
+      <Alerts
+        idAlert="MsgError"
+        cssAlert="alert alert-red"
+        textAlert="NO has acertado, Intétalo de nuevo"
+      />
+    </div>
 
-  <!-- Botón para hacer la apuesta con emojis -->
-  <button class="bet-button">🎲 Apuesta 🎲</button>
-  
+    <!-- COMPONENTE Botón para hacer la apuesta con emojis -->
+    <Button cssButton="bet-button" textButton="🎲 Realizar Apuesta 🎲" />
+  </div>
 </Layout>
-<script  is:inline>
-	function generateRandomNumber() {
-    	return Math.floor(Math.random() * 11);
-	}
-</script>
+
 <script>
-	  let count = 0;
-	  const click = document.querySelector('#counter');
-	  const buttons = document.querySelector('button.red-button');
-	  const spanClicks = document.querySelector('span#counter');
-	  //const apuesta = document.querySelector('button.bet-button');
+  let count = 0;
+  let apuesta = 0;
 
-	  // Cargo Inicialmente un Nº Random
-	  window.addEventListener('load', () => {
-		console.log(generateRandomNumber());
-	  });
+  let buttonClick = document.querySelector("button.red-button");
+  let spanClicks = document.querySelector("span#counter");
+  let btnApuesta = document.querySelector("button.bet-button");
 
-	  // Click Counter
-	  buttons.addEventListener('click', () => {
-		count++;
-		spanClicks.textContent = count.toString();
-    });
+  let MsgPerdida = document.querySelector("div#MsgError");
+  let MsgGanador = document.querySelector("div#divGanador");
+  let game = document.querySelector("div#game");
+
+  // Generar Número
+  function generateRandomNumber() {
+    apuesta = Math.floor(Math.random() * 11);
+    //console.log("APUESTA:" + apuesta);
+    return apuesta;
+  }
+
+  // Cargo Inicialmente un Nº Random
+  window.addEventListener("load", () => {
+    generateRandomNumber();
+  });
+
+  // Reset
+  function resetGame() {
+    count = 0;
+    generateRandomNumber();
+    buttonClick.setAttribute("style", "background:red");
+    buttonClick.textContent = "Click";
+    MsgPerdida.setAttribute("style", "display:none");
+    btnApuesta.setAttribute("style", "display:inline");
+  }
+
+  // Click Counter
+  buttonClick.addEventListener("click", () => {
+    // Contador
+    if (buttonClick.textContent != "Click") {
+      resetGame();
+    } else {
+      count++;
+      count = count == 11 ? 0 : count;
+    }
+    spanClicks.textContent = count.toString();
+  });
+
+  // Click Apuesta
+  btnApuesta.addEventListener("click", () => {
+    // Perdiste
+    buttonClick.setAttribute("style", "background:grey");
+    MsgPerdida.setAttribute("style", "display:inline");
+    btnApuesta.setAttribute("style", "display:none");
+    buttonClick.textContent = "Jugar de Nuevo";
+    if (count == apuesta) {
+      // Ganaste
+      MsgGanador.setAttribute("class", "show");
+      game.setAttribute("class", "hidden");
+    }
+  });
 </script>

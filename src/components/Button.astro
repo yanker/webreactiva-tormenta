@@ -1,0 +1,9 @@
+---
+interface Props{
+    cssButton: string,
+    textButton: string
+}
+const {cssButton,textButton} = Astro.props;
+---
+
+<button class={cssButton}>{textButton}</button>

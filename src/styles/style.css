@@ -1,66 +1,91 @@
 /* Estilo para el botón rojo */
 .red-button {
-    background-color: red;
-    color: white;
-    padding: 20px;
-    border-radius: 50%; /* Hace el botón redondo */
-    font-size: 1.5rem;
-    border: none;
-    cursor: pointer;
-    transition: transform 0.3s ease, background-color 0.3s ease; /* Transición suave */
-  }
+  background-color: red;
+  color: white;
+  padding: 20px;
+  border-radius: 50%; /* Hace el botón redondo */
+  font-size: 1.5rem;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease; /* Transición suave */
+}
 
-  /* Efecto hover para el botón rojo */
-  .red-button:hover {
-    background-color: darkred;
-    color: yellow;
-    transform: scale(1.5); /* Escala el botón */
-  }
+/* Efecto hover para el botón rojo */
+.red-button:hover {
+  background-color: darkred;
+  color: yellow;
+  transform: scale(1.5); /* Escala el botón */
+}
 
-  /* Estilo para el contador */
-  .counter {
-    font-size: 1.5rem;
-    margin: 20px;
-  }
+/* Estilo para el contador */
+.counter {
+  font-size: 1.5rem;
+  margin: 20px;
+}
 
-  /* Estilo para el botón de apuesta */
-  .bet-button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 15px 30px;
-    font-size: 1.5rem;
-    border: none;
-    cursor: pointer;
-  }
+/* Estilo para el botón de apuesta */
+.bet-button {
+  background-color: #4caf50;
+  color: white;
+  padding: 15px 30px;
+  font-size: 1.5rem;
+  border: none;
+  cursor: pointer;
+}
 
-  .bet-button:hover {
-    background-color: darkgreen;
-  }
+.bet-button:hover {
+  background-color: darkgreen;
+}
 
-  /* ALERTS */
-  /* The alert message box */
+/* ALERTS */
+/* The alert message box */
 .alert {
-    padding: 20px;   
-    color: white;
-    margin-bottom: 15px;
-  }
+  padding: 20px;
+  color: white;
+  margin-bottom: 15px;
+}
 
-  .alert-red{ background-color: #f44336; /* Red */}
-  .alert-green{ background-color: green;}
-  
-  /* The close button */
-  .closebtn {
-    margin-left: 15px;
-    color: white;
-    font-weight: bold;
-    float: right;
-    font-size: 22px;
-    line-height: 20px;
-    cursor: pointer;
-    transition: 0.3s;
-  }
-  
-  /* When moving the mouse over the close button */
-  .closebtn:hover {
-    color: black;
-  }
+.alert-red {
+  background-color: #f44336; /* Red */
+}
+.alert-green {
+  background-color: green;
+}
+
+/* The close button */
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* When moving the mouse over the close button */
+.closebtn:hover {
+  color: black;
+}
+
+h1.ganaste {
+  color: #4caf50;
+  font-size: 100px;
+}
+
+a.volver {
+  background-color: #008cba;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  border-radius: 10px;
+}
+
+/* Clases Visibility */
+.hidden {display: none;}
+.show {display: inline;}
